@@ -4,6 +4,7 @@ import com.challenge.customer.entity.Customer;
 import com.challenge.customer.exception.ExceptionType;
 import com.challenge.customer.exception.UseCaseException;
 import com.challenge.customer.repository.CustomerRepository;
+import com.challenge.customer.service.KpiCustomerService;
 import com.challenge.customer.usecase.CustomerStatistics;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -18,10 +19,10 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class CustomerStatisticsImpl implements CustomerStatistics {
 
-    private final CustomerRepository customerRepository;
+    private final KpiCustomerService kpiCustomerService;
 
     public Double getAverageCustomersAge(){
-        List<Customer> customers = customerRepository.findAll().stream()
+        List<Customer> customers = kpiCustomerService.getAll().stream()
                 .filter(customer -> Customer.Status.ACTIVE.equals(customer.getStatus()))
                 .toList();
         List<Integer> ages = customers.stream()
@@ -39,7 +40,7 @@ public class CustomerStatisticsImpl implements CustomerStatistics {
 
     @Override
     public Double getVarianceOfCustomersAge() {
-        List<Customer> customers = customerRepository.findAll().stream()
+        List<Customer> customers = kpiCustomerService.getAll().stream()
                 .filter(customer -> Customer.Status.ACTIVE.equals(customer.getStatus()))
                 .toList();
         List<Integer> ages = customers.stream()

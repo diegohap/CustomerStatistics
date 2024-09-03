@@ -9,8 +9,4 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public interface CustomerRepository extends JpaRepository<Customer, String>{
-
-    @Query("SELECT c.birth FROM Customer c WHERE c.id = :id")
-    LocalDate findAgeById(@Param("id") String id);
-}
+public interface CustomerRepository extends JpaRepository<Customer, String> {}
