@@ -2,7 +2,7 @@ spring:
   application:
     name: "customer"
   datasource:
-    url: "jdbc:mysql://localhost:33060/Customers?allowPublicKeyRetrieval=true&useSSL=false&useTimezone=true&serverTimezone=GMT&characterEncoding=UTF-8"
+    url: "jdbc:mysql://customerstatisticsdb-mysql.cb46ge4i8nxv.us-east-2.rds.amazonaws.com:3306/Customers?allowPublicKeyRetrieval=true&useSSL=false&useTimezone=true&serverTimezone=GMT&characterEncoding=UTF-8"
     username: ${username}
     password: ${password}
     driver-class-name: "com.mysql.cj.jdbc.Driver"
